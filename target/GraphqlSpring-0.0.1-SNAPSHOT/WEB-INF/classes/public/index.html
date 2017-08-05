@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<style>
+	body{
+		padding: 60px;
+	}
+	pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+    .string { color: green; }
+    .number { color: darkorange; }
+    .boolean { color: blue; }
+    .null { color: magenta; }
+    .key { color: dodgerblue; }
+
+</style>
+
+<body>
+
+	<h1>GraphQL + Spring(Core/Data/Boot/ORM)</h1>
+	  
+	<p>Modify the attributes (by eliminating or re-ordering some), then click go button.</p>  
+	<p>"Send a GraphQL query to your API and get exactly what you need, nothing more and nothing less."</p>
+	
+	<p>"GraphQL queries access not just the properties of one resource but also smoothly follow references between them."</p>
+	
+	<p></p>
+	
+	<p>In this example, Person ("person_id",
+		"age",
+		"firstName",
+		"lastName", and
+		"age") are stored on a PLSql database and addresses ("address_id",
+			"street",
+			"block",
+			"region",
+			"country",
+			"zip") are stored in a text file. With only one API endpoint, we get exact info we need. 
+	</p>
+	<br>
+	<br><br><br>
+    
+    <h2>Example One: get person_id = 1 with only first/lastname</h2>
+    
+    <table >
+    <tr>
+         
+        <td>		        <form >
+			    <textarea id="box_1" rows="6" cols="40" >{
+     person (id:"1") {  
+		firstName 
+		lastName 
+	}
+}</textarea>
+			    <br>
+			    <button onclick="box_click(event, 1)">go</button>
+			    </form>
+        		
+        </td>  
+        <td>
+        	<pre>
+        		<div id= "boxRes_1"></div>
+        	</pre>
+        </td>
+	</table>
+	
+	 <script>
+                function syntaxHighlight(json) {
+                    if (typeof json != 'string') {
+                        json = JSON.stringify(json, undefined, 2);
+                    }
+                    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+                        var cls = 'number';
+                        if (/^"/.test(match)) {
+                            if (/:$/.test(match)) {
+                                cls = 'key';
+                            } else {
+                                cls = 'string';
+                            }
+                        } else if (/true|false/.test(match)) {
+                            cls = 'boolean';
+                        } else if (/null/.test(match)) {
+                            cls = 'null';
+                        }
+                        return '<span class="' + cls + '">' + match + '</span>';
+                    });
+                }
+
+                function box_click(event, id){
+                    event.preventDefault();
+                    var text = document.getElementById("box_"+id).value;
+
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() { 
+                        if (this.readyState == 4) {
+
+                            var res_json = JSON.parse(this.responseText)
+
+                            document.getElementById("boxRes_"+id).innerHTML =
+                                syntaxHighlight(res_json);
+                        }
+                    };
+                    xhttp.open("POST", "http://ec2-34-227-111-97.compute-1.amazonaws.com:8080/GraphqlSpring/query", true);
+                    xhttp.send(text);
+
+                }
+
+            </script>
+	
+     <br> <br><br>
+    <h2>Example Two: get person_id = 4 with maximal info</h2>
+    
+    <table >
+    <tr>
+         
+        <td>		        <form >
+			    <textarea id="box_2" rows="16" cols="40" >{
+     person (id:"4") {
+		id 
+		firstName 
+		lastName
+		age
+		addresses  {
+			id
+			street
+			block
+			region
+			country
+			zip
+		} 
+	}
+}</textarea>
+			    <br>
+			    <button onclick="box_click(event, 2)">go</button>
+			    </form>
+        		
+        </td>  
+        <td>
+        	<pre>
+        		<div id= "boxRes_2"></div>
+        	</pre>
+        </td>
+	</table>
+    
+    <br><br><br>
+     <h2>Example Three: get all people with maximal info</h2>
+    
+    <table >
+    <tr>
+         
+        <td>		        <form >
+			    <textarea id="box_3" rows="16" cols="40" >{
+     allPeople {
+		id 
+		firstName 
+		lastName
+		age
+		addresses  {
+			id
+			street
+			block
+			region
+			country
+			zip
+		} 
+	}
+}</textarea>
+			    <br>
+			    <button onclick="box_click(event, 3)">go</button>
+			    </form>
+        		
+        </td>  
+        <td>
+        	<pre>
+        		<div id= "boxRes_3" rows="16" cols="40"></div>
+        	</pre>
+        </td>
+	</table>
+	
+	
+</body>
+ 
+</html>

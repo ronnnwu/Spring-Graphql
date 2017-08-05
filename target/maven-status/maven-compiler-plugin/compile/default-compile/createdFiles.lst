@@ -1,0 +1,10 @@
+com/data/api/model/Person.class
+com/data/api/repository/AddressRepository.class
+com/data/api/datafetcher/PersonDataFetcher.class
+com/data/api/loader/PersonLoader.class
+com/data/api/Application.class
+com/data/api/datafetcher/AddressDataFetcher.class
+com/data/api/model/Address.class
+com/data/api/repository/PersonRepository.class
+com/data/api/controller/QueryController.class
+com/data/api/datafetcher/AllPeopleDataFetcher.class

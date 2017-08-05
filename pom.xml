@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.ronwu</groupId>
+  <artifactId>GraphqlSpring</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+    
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.4.1.RELEASE</version>
+	</parent>
+
+  <properties>
+  	<java.version>1.8</java.version>
+  </properties> 
+   
+  <dependencies>
+  
+  <!--  graphql  -->
+	<dependency>
+	    <groupId>com.graphql-java</groupId>
+	    <artifactId>graphql-java</artifactId>
+	    <version>3.0.0</version>
+	</dependency>
+ 
+	<!-- Spring MVC with Build in Tomcat boot -->
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-web</artifactId>
+  	</dependency>
+  	
+  	<!-- Spring Data repository with findOne, findAll, ...-->
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-data-jpa</artifactId>  
+  	</dependency> 
+  	
+	
+  	<!-- devtools restarts your server when changes are made to app while it's 
+			running devtoools are automagically disabled when project is packaged -->
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-devtools</artifactId> 
+  	</dependency>
+  	
+  	<!-- actuator for Spring MVC- provides rest endpoints for MVC diagnostics 
+			(i.e. /health, /beans, /metrics) -->
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-actuator</artifactId> 
+  	</dependency>
+  	
+  	<!-- data access dependencies -->
+  	<dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-oracle</artifactId>
+            <version>1.2.1.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.ojdbc</groupId>
+            <artifactId>ojdbc</artifactId>
+            <version>12.1.0.1</version>
+        </dependency>
+        
+        <!-- convert back to traditional deploy -->
+        <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-tomcat</artifactId>
+        <scope>provided</scope>
+    </dependency>
+    
+    </dependencies>
+      
+  <build>
+        <plugins>
+            <!-- Let Spring Boot plugin manage dependencies. -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+   

@@ -1,0 +1,10 @@
+/Users/ronnnwu/JAVA_Bootcamp/GraphqlSpring/src/main/java/com/data/api/model/Person.java
+/Users/ronnnwu/JAVA_Bootcamp/GraphqlSpring/src/main/java/com/data/api/datafetcher/PersonDataFetcher.java
+/Users/ronnnwu/JAVA_Bootcamp/GraphqlSpring/src/main/java/com/data/api/datafetcher/AllPeopleDataFetcher.java
+/Users/ronnnwu/JAVA_Bootcamp/GraphqlSpring/src/main/java/com/data/api/repository/AddressRepository.java
+/Users/ronnnwu/JAVA_Bootcamp/GraphqlSpring/src/main/java/com/data/api/model/Address.java
+/Users/ronnnwu/JAVA_Bootcamp/GraphqlSpring/src/main/java/com/data/api/Application.java
+/Users/ronnnwu/JAVA_Bootcamp/GraphqlSpring/src/main/java/com/data/api/controller/QueryController.java
+/Users/ronnnwu/JAVA_Bootcamp/GraphqlSpring/src/main/java/com/data/api/loader/PersonLoader.java
+/Users/ronnnwu/JAVA_Bootcamp/GraphqlSpring/src/main/java/com/data/api/datafetcher/AddressDataFetcher.java
+/Users/ronnnwu/JAVA_Bootcamp/GraphqlSpring/src/main/java/com/data/api/repository/PersonRepository.java
