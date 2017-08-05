@@ -50,8 +50,8 @@
     <table >
     <tr>
          
-        <td>		        <form >
-			    <textarea id="box_1" rows="6" cols="40" >{
+        <td style="vertical-align:top">		        <form >
+			    <textarea id="box_1" rows="6" cols="40">{
      person (id:"1") {  
 		firstName 
 		lastName 
@@ -63,8 +63,8 @@
         		
         </td>  
         <td>
-        	<pre>
-        		<div id= "boxRes_1"></div>
+        	<pre id= "boxPre_1"  style="display: none;">
+        		<div id= "boxRes_1" ></div>
         	</pre>
         </td>
 	</table>
@@ -95,15 +95,16 @@
                 function box_click(event, id){
                     event.preventDefault();
                     var text = document.getElementById("box_"+id).value;
-
                     var xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function() { 
                         if (this.readyState == 4) {
 
                             var res_json = JSON.parse(this.responseText)
 
-                            document.getElementById("boxRes_"+id).innerHTML =
-                                syntaxHighlight(res_json);
+                            document.getElementById("boxRes_"+id).innerHTML=syntaxHighlight(res_json).trim();
+                      
+
+                            document.getElementById("boxPre_"+id).style.display = 'block';
                         }
                     };
                     xhttp.open("POST", "http://ec2-34-227-111-97.compute-1.amazonaws.com:8080/GraphqlSpring/query", true);
@@ -119,8 +120,8 @@
     <table >
     <tr>
          
-        <td>		        <form >
-			    <textarea id="box_2" rows="16" cols="40" >{
+        <td style="vertical-align:top">		        <form >
+			    <textarea id="box_2" rows="16" cols="40">{
      person (id:"4") {
 		id 
 		firstName 
@@ -142,7 +143,7 @@
         		
         </td>  
         <td>
-        	<pre>
+        	<pre id= "boxPre_2"  style="display: none;">
         		<div id= "boxRes_2"></div>
         	</pre>
         </td>
@@ -154,7 +155,7 @@
     <table >
     <tr>
          
-        <td>		        <form >
+        <td style="vertical-align:top">		        <form >
 			    <textarea id="box_3" rows="16" cols="40" >{
      allPeople {
 		id 
@@ -177,7 +178,7 @@
         		
         </td>  
         <td>
-        	<pre>
+        	<pre id= "boxPre_3"  style="display: none;">
         		<div id= "boxRes_3" rows="16" cols="40"></div>
         	</pre>
         </td>
