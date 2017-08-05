@@ -1,9 +1,5 @@
 package com.data.api.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
 public class Address {
 	
 	public Address(){}
@@ -17,8 +13,7 @@ public class Address {
 		this.country = country;
 		this.zip = zip;
 	}
-	
-	@Id  //primary key
+	 
 	private String id;
 	
 	private String street;
